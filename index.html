@@ -217,6 +217,17 @@ footer img{width:160px;height:auto;margin:0 auto 10px}
 .btn-wa{display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#1FAF5A;color:#fff;font-weight:900;padding:14px 22px;border-radius:14px}
 .btn-wa:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 .btn-ghost{font:inherit;font-weight:800;background:transparent;border:1.5px solid var(--line);color:var(--blue);padding:13px 20px;border-radius:14px;cursor:pointer}
+.notice .how{margin-top:12px;font-size:.92rem;color:var(--ink-soft)}
+.last{border:2px solid var(--cyan);background:#F0FBFE;border-radius:var(--r-md);padding:18px 20px;margin-bottom:26px}
+.last-tag{display:inline-block;font-weight:900;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--blue);border-radius:6px;padding:4px 9px}
+.last h3{margin-top:10px}
+.last p{margin:6px 0 0;color:var(--ink)}
+.mailbtns{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+.mb{font:inherit;font-weight:800;font-size:.92rem;text-decoration:none;border:0;cursor:pointer;background:var(--blue);color:#fff;padding:11px 16px;border-radius:12px}
+.mb:hover{background:var(--blue-deep)}
+.mb.ghost{background:#fff;color:var(--blue);border:1.5px solid var(--line)}
+.mb:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.last .alt{margin-top:12px;font-size:.88rem;color:var(--ink-soft)}
 .recap{margin-top:22px;font-size:.88rem;color:var(--ink-soft);text-align:center}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.conf{display:none}}
@@ -388,22 +399,16 @@ footer img{width:160px;height:auto;margin:0 auto 10px}
 
   <!-- PASO 4 -->
   <section class="step" aria-labelledby="h4s">
-    <div class="step-head"><div class="num"><span>4</span></div><div><h2 id="h4s">Comprobante de pago</h2><p>Adjúntalo aquí y lo enviamos con tu inscripción al equipo de TIIMPAL.</p></div></div>
+    <div class="step-head"><div class="num"><span>4</span></div><div><h2 id="h4s">Comprobante de pago</h2><p>Lo adjuntas en el correo que se abrirá al confirmar.</p></div></div>
     <div class="notice">
       <p><b>Por favor envíenos su comprobante de pago para confirmar su asistencia</b> a los siguientes email:</p>
       <div class="mails">
+        <span class="mail">soporte@tiimpal.com <button type="button" class="copy" data-copy="soporte@tiimpal.com">Copiar</button></span>
         <span class="mail">facturacion@tiimpal.com <button type="button" class="copy" data-copy="facturacion@tiimpal.com">Copiar</button></span>
-        <span class="mail">directoradministrativo@tiimpal.com <button type="button" class="copy" data-copy="directoradministrativo@tiimpal.com">Copiar</button></span>
+        <span class="mail">directoroperaciones@tiimpal.com <button type="button" class="copy" data-copy="directoroperaciones@tiimpal.com">Copiar</button></span>
+        <span class="mail">comercial@tiimpal.com <button type="button" class="copy" data-copy="comercial@tiimpal.com">Copiar</button></span>
       </div>
-    </div>
-    <div data-f="comp">
-      <label class="drop" id="drop" for="comprobante">
-        <input type="file" id="comprobante" name="Archivo del comprobante" accept="image/*,.pdf,.doc,.docx">
-        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0l-5 5m5-5l5 5M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div><b>Cargar comprobante</b><small>Imagen, PDF o documento · máximo 8 MB. Si aún no has pagado, puedes enviarlo después a los correos de arriba.</small></div>
-      </label>
-      <div class="filechip" id="chip" hidden><span id="chipName"></span><button type="button" id="chipDel">Quitar</button></div>
-      <span class="err" id="compErr">El archivo supera 8 MB. Comprímelo o envíalo por correo.</span>
+      <p class="how">Al dar clic en <b>Confirmar Asistencia</b> se abrirá tu correo con tus datos listos y dirigido a estos correos. Solo adjunta la foto o el PDF de tu comprobante y dale <b>Enviar</b>.</p>
     </div>
   </section>
 
@@ -420,11 +425,23 @@ footer img{width:160px;height:auto;margin:0 auto 10px}
 <!-- BIENVENIDA -->
 <section class="welcome" id="welcome" hidden tabindex="-1" aria-live="polite">
   <div class="w-top" id="wTop">
-    <span class="tag">Registro recibido</span>
+    <span class="tag">Inscripción lista</span>
     <h2>¡Bienvenido al Primer Boot Camp de <span>INEDIT Software y TIIMPAL</span> en Colombia!</h2>
     <p><b>Llegaremos juntos al siguiente nivel.</b> Prepárate, porque pronto serás un técnico experto en NeoStampa.</p>
   </div>
   <div class="w-body">
+    <div class="last">
+      <span class="last-tag">Último paso</span>
+      <h3>Envía tu registro con tu comprobante</h3>
+      <p>Abrimos tu correo con tus datos listos para TIIMPAL. <b>Adjunta tu comprobante de pago y dale Enviar.</b> Si tu correo no se abrió, elige una opción:</p>
+      <div class="mailbtns">
+        <a class="mb" id="mbApp" href="#">Abrir mi app de correo</a>
+        <a class="mb" id="mbGmail" href="#" target="_blank" rel="noopener">Gmail</a>
+        <a class="mb" id="mbOutlook" href="#" target="_blank" rel="noopener">Outlook / Hotmail</a>
+        <button type="button" class="mb ghost" id="mbCopy">Copiar mis datos</button>
+      </div>
+      <p class="alt">¿Prefieres WhatsApp? <a id="mbWa" href="#" target="_blank" rel="noopener">Envía tus datos por WhatsApp</a> y adjunta allí tu comprobante.</p>
+    </div>
     <h3 id="wHello">Estamos procesando tu registro</h3>
     <p>Una vez sea confirmado tu pago, te estaremos enviando todas las instrucciones y recomendaciones para que tu experiencia de aprendizaje en el Boot Camp sea 100% exitosa. Pronto uno de nuestros asesores te estará contactando al correo <b id="wMail"></b> o a tu WhatsApp, o ponte en contacto con nosotros:</p>
     <div class="contact">
@@ -440,9 +457,6 @@ footer img{width:160px;height:auto;margin:0 auto 10px}
       </div>
     </div>
     <div class="w-actions">
-      <a class="btn-wa" id="waBtn" href="#" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1 0-.3-.1-.5-.2z"/></svg>
-        Recibir confirmación por WhatsApp</a>
       <button type="button" class="btn-ghost" id="again">Inscribir a otra persona</button>
     </div>
     <p class="recap" id="recap"></p>
@@ -461,13 +475,12 @@ footer img{width:160px;height:auto;margin:0 auto 10px}
 <script>
 /* ================= CONFIGURACIÓN ================= */
 const CONFIG = {
-  // URL del receptor de inscripciones (Google Apps Script → "Implementar" → URL de la app web)
-  endpoint: "__ENDPOINT__",
+  // Correos que reciben cada registro y asunto del correo
+  para: "soporte@tiimpal.com,facturacion@tiimpal.com,directoroperaciones@tiimpal.com,comercial@tiimpal.com",
+  asunto: "Nuevo registro Inedit Boot Camp",
   waTiimpal: "573153062243",
   evento: "Inedit Boot Camp by TIIMPAL — 24, 25 y 26 de noviembre de 2026, Medellín",
   valor: "$3.570.000 (IVA incluido)",
-  maxMB: 8,
-  timeoutMs: 60000
 };
 /* ================================================= */
 
@@ -492,23 +505,6 @@ $$('input[name=usa]').forEach(r => r.addEventListener('change', () => {
 /* ---- "Otra" marca ---- */
 $('#m-otra').addEventListener('change', e => { $('#otraWrap').hidden = !e.target.checked; if (e.target.checked) $('#otra').focus(); });
 
-/* ---- comprobante ---- */
-const fileIn = $('#comprobante'), drop = $('#drop');
-['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
-['dragleave','drop'].forEach(ev => drop.addEventListener(ev, () => drop.classList.remove('over')));
-drop.addEventListener('drop', e => { e.preventDefault(); if (e.dataTransfer.files.length) { try { fileIn.files = e.dataTransfer.files; } catch(_){} showFile(); } });
-fileIn.addEventListener('change', showFile);
-$('#chipDel').addEventListener('click', () => { fileIn.value=''; showFile(); });
-function showFile(){
-  const f = fileIn.files && fileIn.files[0];
-  const box = fileIn.closest('[data-f]');
-  box.classList.remove('invalid');
-  if (!f) { $('#chip').hidden = true; return; }
-  $('#chipName').textContent = '✓ ' + f.name + ' (' + (f.size/1048576).toFixed(1) + ' MB)';
-  $('#chip').hidden = false;
-  if (f.size > CONFIG.maxMB*1048576) box.classList.add('invalid');
-}
-
 /* ---- validación ---- */
 const val = id => $('#'+id).value.trim();
 const checked = g => $$('input[data-g="'+g+'"]:checked').map(i => i.value);
@@ -527,7 +523,6 @@ const rules = {
   marca:  () => checked('marca').length > 0,
   otra:   () => !$('#m-otra').checked || val('otra').length >= 2,
   obj:    () => !!radio('obj'),
-  comp:   () => { const f = fileIn.files && fileIn.files[0]; return !f || f.size <= CONFIG.maxMB*1048576; },
   ok:     () => $('#ok').checked
 };
 function validate(){
@@ -551,7 +546,6 @@ function collect(){
   const now = new Date();
   const fecha = now.toLocaleString('es-CO', {timeZone:'America/Bogota', dateStyle:'short', timeStyle:'short'});
   const marcas = checked('marca').map(m => m === 'Otra' ? 'Otra: ' + val('otra') : m);
-  const f = fileIn.files && fileIn.files[0];
   return {
     'Fecha de registro': fecha,
     'Nombre o Razón Social': val('nombre'),
@@ -563,51 +557,44 @@ function collect(){
     'Usa NeoStampa': radio('usa'),
     'Para qué usa NeoStampa': checked('proc').join(', '),
     'Marcas de impresoras': marcas.join(', '),
-    'Objetivo principal': radio('obj'),
-    'Comprobante de pago': f ? 'Adjunto: ' + f.name : 'Pendiente'
+    'Objetivo principal': radio('obj')
   };
 }
-/* ---- envío ---- */
-function fileB64(file){ return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1] || ''); r.onerror = () => rej(r.error); r.readAsDataURL(file); }); }
-let sending = false;
-form.addEventListener('submit', async e => {
+/* ---- envío por correo (sin servidor) ---- */
+function mailBody(d){
+  const keys = Object.keys(d), w = Math.max(...keys.map(k => k.length)) + 3;
+  const line = '------------------------------------------------------------';
+  return 'NUEVO REGISTRO – INEDIT BOOT CAMP by TIIMPAL\n' + line + '\n'
+    + keys.map(k => (k + ' ').padEnd(w, '.') + ' ' + d[k]).join('\n')
+    + '\n' + line + '\nComprobante de pago: adjunto a este correo.\n';
+}
+let mailText = '';
+form.addEventListener('submit', e => {
   e.preventDefault();
-  if (sending) return;
   $('#fail').hidden = true;
   if (!validate()) return;
   const d = collect();
-  sending = true;
-  const btn = $('#go'); btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Enviando inscripción…';
-  try {
-    const payload = { datos: d };
-    const f = fileIn.files && fileIn.files[0];
-    if (f) payload.comprobante = { name: f.name, type: f.type || 'application/octet-stream', data: await fileB64(f) };
-    const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), CONFIG.timeoutMs);
-    const res = await fetch(CONFIG.endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload), signal: ctrl.signal });
-    clearTimeout(t);
-    const out = await res.json();
-    if (!out.ok) throw new Error(out.error || 'Error del servidor');
-    success(d);
-  } catch (err) {
-    console.error('envío', err);
-    failed(d);
-  }
+  const su = CONFIG.asunto + ' – ' + d['Nombre o Razón Social'];
+  mailText = mailBody(d);
+  const enc = encodeURIComponent;
+  const mailto = 'mailto:' + CONFIG.para + '?subject=' + enc(su) + '&body=' + enc(mailText);
+  $('#mbApp').href = mailto;
+  $('#mbGmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + enc(CONFIG.para) + '&su=' + enc(su) + '&body=' + enc(mailText);
+  $('#mbOutlook').href = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + enc(CONFIG.para) + '&subject=' + enc(su) + '&body=' + enc(mailText);
+  $('#mbWa').href = 'https://wa.me/' + CONFIG.waTiimpal + '?text=' + enc(mailText.replace('Comprobante de pago: adjunto a este correo.', 'Adjunto mi comprobante de pago.'));
+  success(d);
+  setTimeout(() => { window.location.href = mailto; }, 600);
 });
-
-function reset(){ sending = false; const b = $('#go'); b.disabled = false; b.textContent = 'Confirmar Asistencia'; }
-function failed(d){
-  reset();
-  const f = $('#fail'); f.hidden = false;
-  const wa = 'https://wa.me/' + CONFIG.waTiimpal + '?text=' + encodeURIComponent('Hola TIIMPAL, quiero inscribirme al Inedit Boot Camp. ' + Object.entries(d).map(([k,v]) => k + ': ' + v).join(' | '));
-  f.innerHTML = '<b>No pudimos confirmar el envío.</b> Revisa tu conexión e inténtalo de nuevo. Si el problema sigue, <a href="' + wa + '" target="_blank" rel="noopener">envíanos tus datos por WhatsApp</a> o escríbenos a comercial@tiimpal.com.';
-}
+$('#mbCopy').addEventListener('click', () => {
+  const b = $('#mbCopy'); const done = () => { b.textContent = 'Datos copiados'; setTimeout(() => b.textContent = 'Copiar mis datos', 1800); };
+  const all = 'Para: ' + CONFIG.para.split(',').join(', ') + '\n\n' + mailText;
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(all).then(done, () => fallbackCopy(all, done)); else fallbackCopy(all, done);
+});
 function success(d){
-  reset();
   form.hidden = true;
   const w = $('#welcome'); w.hidden = false;
   $('#wHello').textContent = '¡Gracias, ' + d['Nombre o Razón Social'] + '! Estamos procesando tu registro';
   $('#wMail').textContent = d['Email'];
-  $('#waBtn').href = 'https://wa.me/' + CONFIG.waTiimpal + '?text=' + encodeURIComponent('Hola TIIMPAL, acabo de inscribirme al Inedit Boot Camp. Nombre: ' + d['Nombre o Razón Social'] + ' · C.C./NIT: ' + d['C.C. o NIT'] + ' · Ciudad: ' + d['Ciudad'] + ' · Comprobante: ' + d['Comprobante de pago'] + '. Quedo atento(a) a la confirmación.');
   $('#recap').textContent = 'Registro: ' + d['Fecha de registro'] + ' · ' + d['C.C. o NIT'] + ' · ' + d['Ciudad'];
   confetti();
   window.scrollTo({top: 0, behavior: 'smooth'});
@@ -624,7 +611,7 @@ function confetti(){
   }
 }
 $('#again').addEventListener('click', () => {
-  form.reset(); fileIn.value=''; showFile(); $('#otraWrap').hidden = true;
+  form.reset(); $('#otraWrap').hidden = true;
   $$('.invalid').forEach(b => b.classList.remove('invalid')); $('#sumErr').classList.remove('on');
   $('#welcome').hidden = true; form.hidden = false; $$('.conf').forEach(c => c.remove());
   window.scrollTo({top: 0, behavior: 'smooth'});
