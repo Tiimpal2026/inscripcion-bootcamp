@@ -776,7 +776,7 @@ $('#dlgNext').addEventListener('click', () => {
   reg['Apellidos del participante'] = val('pa');
   reg['Documento de identidad del participante'] = val('pd');
   const link = formLink(reg);
-  $('#msf').src = link + '&embed=true';
+  $('#msf').src = link;
   $('#msfLink').href = link;
   showStep(true);
 });
