@@ -634,7 +634,8 @@ function mailBody(d){
   const line = '------------------------------------------------------------';
   return 'NUEVO REGISTRO – INEDIT BOOT CAMP by TIIMPAL\n' + line + '\n'
     + keys.map(k => (k + ' ').padEnd(w, '.') + ' ' + d[k]).join('\n')
-    + '\n' + line + '\nComprobante de pago: adjunto a este correo.\n';
+    + '\n' + line + '\nComprobante de pago: adjunto a este correo.\n'
+    + '\n\nCódigo de registro (no modificar):\nREGISTRO|' + keys.map(k => String(d[k]).replace(/[|\r\n]+/g, ' / ').trim()).join('|') + '|FIN\n';
 }
 let mailText = '';
 form.addEventListener('submit', e => {
@@ -649,7 +650,7 @@ form.addEventListener('submit', e => {
   $('#mbApp').href = mailto;
   $('#mbGmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + enc(CONFIG.para) + '&su=' + enc(su) + '&body=' + enc(mailText);
   $('#mbOutlook').href = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + enc(CONFIG.para) + '&subject=' + enc(su) + '&body=' + enc(mailText);
-  $('#mbWa').href = 'https://wa.me/' + CONFIG.waTiimpal + '?text=' + enc(mailText.replace('Comprobante de pago: adjunto a este correo.', 'Adjunto mi comprobante de pago.'));
+  $('#mbWa').href = 'https://wa.me/' + CONFIG.waTiimpal + '?text=' + enc(mailText.split('\n\nCódigo de registro')[0].replace('Comprobante de pago: adjunto a este correo.', 'Adjunto mi comprobante de pago.'));
   success(d);
   setTimeout(() => { window.location.href = mailto; }, 600);
 });
