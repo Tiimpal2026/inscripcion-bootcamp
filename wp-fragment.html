@@ -629,13 +629,19 @@ function collect(){
   };
 }
 /* ---- envío por correo (sin servidor) ---- */
+function codigo(d){
+  const v = k => String(d[k] || '').replace(/[|\r\n]+/g, ' / ').trim();
+  return { fecha: v('Fecha de registro'), nombre: v('Nombre o Razón Social'), documento: v('C.C. o NIT'), celular: v('Celular'),
+    direccion: v('Dirección'), ciudad: v('Ciudad'), email: v('Email'), usaNeoStampa: v('Usa NeoStampa'),
+    usos: v('Para qué usa NeoStampa'), marcas: v('Marcas de impresoras'), objetivo: v('Objetivo principal') };
+}
 function mailBody(d){
   const keys = Object.keys(d), w = Math.max(...keys.map(k => k.length)) + 3;
   const line = '------------------------------------------------------------';
   return 'NUEVO REGISTRO – INEDIT BOOT CAMP by TIIMPAL\n' + line + '\n'
     + keys.map(k => (k + ' ').padEnd(w, '.') + ' ' + d[k]).join('\n')
     + '\n' + line + '\nComprobante de pago: adjunto a este correo.\n'
-    + '\n\nCódigo de registro (no modificar):\nREGISTRO|' + keys.map(k => String(d[k]).replace(/[|\r\n]+/g, ' / ').trim()).join('|') + '|FIN\n';
+    + '\n\nCódigo de registro (no modificar):\nREGISTRO|' + JSON.stringify(codigo(d)) + '|FIN\n';
 }
 let mailText = '';
 form.addEventListener('submit', e => {
