@@ -121,6 +121,19 @@ input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,20
 .incl li{display:flex;gap:8px;align-items:baseline}
 .incl li::before{content:"";flex:none;width:8px;height:8px;border-radius:3px;background:var(--lime);transform:rotate(-20deg) translateY(-1px)}
 @media (max-width:640px){.price{grid-template-columns:1fr}.incl{grid-template-columns:1fr}}
+.price .amt b .iva{font-size:.5em;font-weight:800;color:var(--lime);letter-spacing:.01em}
+.bonus{grid-column:1/-1;margin-top:4px;padding:14px 16px;border-radius:14px;background:rgba(127,255,3,.1);border:1px dashed rgba(127,255,3,.55)}
+.bonus small{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--lime);margin-bottom:8px}
+.bonus ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.bonus li{display:flex;gap:10px;align-items:center;font-size:.95rem;font-weight:700;color:#fff}
+.b-ic{flex:none;width:26px;height:26px;border-radius:8px;background:var(--lime);color:#0B2A12;display:grid;place-items:center;font-weight:900;font-size:.85rem}
+.u-ic{animation:u-pulse 2s ease-in-out infinite}
+.u-ic .hand-m{transform-origin:12px 13px;animation:u-spin 4s linear infinite}
+.u-ic .hand-h{transform-origin:12px 13px;animation:u-spin 24s linear infinite}
+@keyframes u-spin{to{transform:rotate(360deg)}}
+@keyframes u-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1) rotate(-6deg)}}
+/* Tamaño general: en pantallas de escritorio se ve como un zoom del 80% */
+@media (min-width:900px){.hero,main,.neo,footer,.dlg-card{zoom:.8}}
 
 .bank{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px;align-items:start}
 @media (max-width:700px){.bank{grid-template-columns:1fr}}
@@ -321,10 +334,10 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
     </div>
     <div class="eyebrow">Inedit Software × TIIMPAL S.A.S.</div>
     <h1>Inedit Boot Camp<span>Colombia · Primera edición</span></h1>
-    <p class="lead">Inscríbete a la capacitación intensiva en el RIP NeoStampa con especialistas de Inedit Software. Tres días de inmersión total en un proceso formativo con una metodología teórico-práctica, que te certificará como técnico o usuario avanzado del RIP neoStampa de Inedit.</p>
+    <p class="lead">Inscríbete a la capacitación intensiva del RIP neoStampa, dictada por un especialista de Inedit Software. Serán 3 días de inmersión total en un proceso formativo con una metodología teórico-práctica, que te acreditará como técnico o usuario avanzado del RIP neoStampa de Inedit.</p>
     <div class="speaker">
       <span class="sp-tag">Speaker</span>
-      <p><b>Ing. Albert Sureda</b>, de Inedit Software, llega con toda su experiencia directamente desde Barcelona, España, para dictar el curso durante estos tres días.</p>
+      <p><b>Ing. Albert Sureda</b>, de Inedit Software, llega con toda su experiencia directamente desde Barcelona, España.</p>
     </div>
     <ul class="facts">
       <li><small>Fechas</small><b>24, 25 y 26 de nov. 2026</b></li>
@@ -431,21 +444,28 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
 
   <!-- PASO 3 -->
   <section class="step pay" aria-labelledby="h3s">
-    <div class="step-head"><div class="num"><span>3</span></div><div><h2 id="h3s">Asegura tu cupo</h2><p>Esta es la oportunidad para llevar tu producción al siguiente nivel: ahora tendrás un control total y profesional de todo tu flujo de trabajo para tus procesos de impresión digital textil.</p></div></div>
-    <p class="pitch">Este es el momento de dominar NeoStampa de verdad. En tres días vas a trabajar con todas las herramientas y opciones que te ofrece neoStampa, <strong>entonarás colores de forma rápida y con precisión</strong>, <strong>tendrás el control total de cada costo dentro de tu producción</strong>, <strong>optimizarás al máximo el consumo de tinta y papel</strong> en todas tus producciones y así sacarás el máximo rendimiento a tus equipos de impresión de la mano de los especialistas que desarrollan el software.</p>
+    <div class="step-head"><div class="num"><span>3</span></div><div><h2 id="h3s">Asegura tu cupo</h2></div></div>
+    <p class="pitch">Este es el momento de llevar tu producción al siguiente nivel y dominar neoStampa de verdad. En tres días, de la mano de los especialistas que desarrollan el software, <strong>entonarás colores con rapidez y precisión</strong>, <strong>tendrás el control total de cada costo</strong> y <strong>optimizarás al máximo el consumo de tinta y papel</strong>: un control profesional de todo tu flujo de impresión digital textil para sacar el máximo rendimiento a tus equipos.</p>
     <div class="urgent" role="note">
-      <span class="u-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="2.4"/><path d="M12 9v4l2.5 2M9 2h6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
-      <p><b>Los cupos son limitados:</b> confirma hoy tu participación y no te quedes sin la oportunidad de obtener esta certificación.</p>
+      <span class="u-ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="2.4"/><path d="M9 2h6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path class="hand-m" d="M12 13V8.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path class="hand-h" d="M12 13l2.6 1.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      <p><b>Cupos limitados:</b> confirma ya tu asistencia y no te quedes sin esta oportunidad para acreditarte como técnico certificado de neoStampa.</p>
     </div>
 
     <div class="price">
-      <div class="amt"><small>Inversión por participante</small><b>$3.570.000</b><em>COP · IVA incluido ($3.000.000 + IVA 19%)</em></div>
+      <div class="amt"><small>Inversión por participante</small><b>$2.500.000 <span class="iva">+ IVA</span></b><em>COP · Total con IVA (19%): $2.975.000</em></div>
       <ul class="incl">
         <li>3 días de capacitación práctica</li>
         <li>Material de apoyo y memorias en USB</li>
         <li>Certificado de asistencia y diploma</li>
         <li>Almuerzo y snacks AM y PM</li>
       </ul>
+      <div class="bonus">
+        <small>Beneficios adicionales</small>
+        <ul>
+          <li><span class="b-ic" aria-hidden="true">%</span>Bonos de descuento en licencias, espectrofotómetros y actualizaciones.</li>
+          <li><span class="b-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Link de descarga gratuita de la demo de neoStampa por 30 días.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="bank">
@@ -488,7 +508,7 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
   <section class="step" aria-labelledby="h4s">
     <div class="step-head"><div class="num"><span>4</span></div><div><h2 id="h4s">Comprobante de pago</h2><p>Envíalo por email o WhatsApp para confirmar tu asistencia.</p></div></div>
     <div class="notice">
-      <p class="lead4"><b>Por favor envíenos su comprobante de pago a cualquiera de los siguientes email o vía WhatsApp para confirmar su asistencia.</b></p>
+      <p class="lead4"><b>Por favor envíanos tu comprobante de pago a cualquiera de los siguientes email o vía WhatsApp.</b> Nuestro equipo validará tu pago y te enviará un email de confirmación con la respectiva factura y todas las recomendaciones e instrucciones para asistir al curso.</p>
       <div class="channels">
         <div class="chan">
           <div class="chan-h"><span class="ch-ic ch-mail"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" stroke="#fff" stroke-width="2.2"/><path d="M4 7.5l8 5.5 8-5.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Email</div>
@@ -803,4 +823,4 @@ $('#again').addEventListener('click', () => {
   window.scrollTo({top: 0, behavior: 'smooth'});
 });
 </script>
-<!-- v-forms-2 -->
+<!-- v-precio-2500 -->
