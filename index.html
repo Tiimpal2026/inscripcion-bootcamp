@@ -326,6 +326,9 @@ body.lock{overflow:hidden}
 .dlg-x:hover,.dlg-x:focus{background:var(--paper);color:var(--ink)}
 .dlg-frame{border:1.5px solid var(--line);border-radius:var(--r-md);overflow:hidden;height:min(60vh,640px);height:min(60dvh,640px);background:var(--paper)}
 .dlg-frame iframe{width:100%;height:100%;border:0;display:block}
+.dlg-how{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:10px}
+.dlg-how li{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.dlg-how span{flex:none;width:28px;height:28px;border-radius:9px;background:var(--blue);color:#fff;font-weight:900;display:grid;place-items:center}
 .dlg-alt{font-size:.85rem;color:var(--ink-soft);margin:10px 0 4px}
 .dlg-steps{display:flex;gap:6px;margin-top:2px}
 .dlg-steps i{width:28px;height:6px;border-radius:4px;background:var(--line)}
@@ -658,9 +661,12 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
     <div id="stB" hidden>
       <div class="dlg-steps" aria-hidden="true"><i class="on"></i><i class="on"></i></div>
       <h3>Envía tu registro</h3>
-      <p class="dlg-p">Tus datos ya están cargados. <b>Baja hasta el final del formulario y da clic en “Enviar”.</b> Tu registro llegará automáticamente al equipo de TIIMPAL.</p>
-      <div class="dlg-frame"><iframe id="msf" title="Registro Inedit Boot Camp" src="about:blank"></iframe></div>
-      <p class="dlg-alt">¿No ves el formulario? <a id="msfLink" href="#" target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a>, da clic en Enviar y regresa aquí.</p>
+      <p class="dlg-p">Abrimos una pestaña nueva con tu formulario de registro <b>ya diligenciado</b>.</p>
+      <ol class="dlg-how">
+        <li><span>1</span><div>En esa pestaña, baja hasta el final y da clic en <b>“Enviar”</b>.</div></li>
+        <li><span>2</span><div>Regresa a esta pestaña y da clic en <b>“Ya di clic en Enviar · Continuar”</b>.</div></li>
+      </ol>
+      <p class="dlg-alt">¿No se abrió la pestaña? <a id="msfLink" href="#" target="_blank" rel="noopener">Abre aquí tu formulario de registro</a>.</p>
       <div class="dlg-act"><button type="button" class="btn-ghost" id="dlgEdit">Corregir diploma</button><button type="button" class="btn-main" id="dlgDone">Ya di clic en Enviar · Continuar</button></div>
     </div>
   </div>
@@ -801,7 +807,7 @@ const dRules = {
 };
 function showStep(b){
   $('#stA').hidden = b; $('#stB').hidden = !b;
-  $('#dlgCard').classList.toggle('wide', b); $('#dlgCard').scrollTop = 0;
+  $('#dlgCard').scrollTop = 0;
 }
 function openDlg(){
   showStep(false);
@@ -810,11 +816,10 @@ function openDlg(){
 }
 function closeDlg(){
   $('#dlg').hidden = true; document.body.classList.remove('lock');
-  $('#msf').src = 'about:blank';
 }
 $('#dlgX').addEventListener('click', closeDlg);
 $('#dlgBack').addEventListener('click', closeDlg);
-$('#dlgEdit').addEventListener('click', () => { $('#msf').src = 'about:blank'; showStep(false); $('#pn').focus(); });
+$('#dlgEdit').addEventListener('click', () => { showStep(false); $('#pn').focus(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#dlg').hidden) closeDlg(); });
 $('#dlg').addEventListener('input', e => { const box = e.target.closest('[data-d]'); if (box && dRules[box.dataset.d]()) box.classList.remove('invalid'); });
 function formLink(d){
@@ -835,7 +840,7 @@ $('#dlgNext').addEventListener('click', () => {
   reg['Apellidos del participante'] = val('pa');
   reg['Documento de identidad del participante'] = val('pd');
   const link = formLink(reg);
-  $('#msf').src = link;
+  window.open(link, '_blank');
   $('#msfLink').href = link;
   showStep(true);
 });
