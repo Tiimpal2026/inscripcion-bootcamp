@@ -107,6 +107,17 @@ input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,20
 .pay .step-head h2{color:#fff}
 .pay .step-head p{color:#CFE0FF}
 .pay .num{background:var(--cyan);color:var(--blue-deep)}
+select{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%230443B2' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:13px 40px 13px 15px;min-height:50px;height:auto;line-height:1.4;margin:0;-webkit-appearance:none;appearance:none;cursor:pointer}
+select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,206,234,.25)}
+select.empty{color:#9AA6BD}
+select option{color:var(--ink)}
+.field.invalid>select{border-color:var(--error)}
+.upload{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 20px;border-radius:var(--r-md);background:#fff;color:var(--ink)}
+.up-txt{flex:1 1 280px;font-size:.98rem}
+.up-txt b{color:var(--blue)}
+.btn-up{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;background:var(--blue);color:#fff;padding:14px 22px;border-radius:14px;white-space:nowrap}
+.btn-up:hover,.btn-up:focus{background:var(--blue-deep);color:#fff}
+.btn-up:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 .pitch{font-size:1.1rem;line-height:1.6;max-width:40em;margin:0 0 24px;color:#EAF2FF}
 .pitch strong{color:#fff}
 .urgent{display:flex;align-items:center;gap:14px;margin:0 0 24px;padding:16px 20px;border-radius:var(--r-md);background:var(--lime);color:#0B2A12;box-shadow:0 12px 28px -14px rgba(127,255,3,.7)}
@@ -387,6 +398,26 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
         <input type="email" id="email" autocomplete="email" placeholder="nombre@empresa.com">
         <span class="err">Escribe un correo válido; allí te llegará la confirmación.</span>
       </div>
+      <div class="field" data-f="sexo">
+        <label class="lbl" for="sexo">Sexo <span class="req">*</span></label>
+        <select id="sexo"><option value="">Selecciona una opción</option><option>Femenino</option><option>Masculino</option></select>
+        <span class="err">Selecciona el sexo.</span>
+      </div>
+      <div class="field" data-f="edad">
+        <label class="lbl" for="edad">Edad <span class="req">*</span></label>
+        <select id="edad"><option value="">Selecciona una opción</option><option>18 a 28 años</option><option>29 a 54 años</option><option>Mayores de 55</option></select>
+        <span class="err">Selecciona el rango de edad.</span>
+      </div>
+      <div class="field" data-f="cargo">
+        <label class="lbl" for="cargo">Cargo <span class="req">*</span></label>
+        <input type="text" id="cargo" autocomplete="organization-title" placeholder="Ej. Jefe de producción">
+        <span class="err">Escribe tu cargo.</span>
+      </div>
+      <div class="field" data-f="nivel">
+        <label class="lbl" for="nivel">Nivel de formación <span class="req">*</span></label>
+        <select id="nivel"><option value="">Selecciona una opción</option><option>Técnico</option><option>Tecnólogo</option><option>Profesional</option><option>Especialización</option></select>
+        <span class="err">Selecciona tu nivel de formación.</span>
+      </div>
     </div>
   </section>
 
@@ -437,6 +468,7 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
         <label class="opt"><input type="radio" name="obj" id="o-cos" value="Control de Costos"><span>Control de Costos</span></label>
         <label class="opt"><input type="radio" name="obj" id="o-car" value="Generar Cartas de Color"><span>Generar Cartas de Color</span></label>
         <label class="opt"><input type="radio" name="obj" id="o-def" value="Mejorar la Definición"><span>Mejorar la Definición</span></label>
+        <label class="opt"><input type="radio" name="obj" id="o-her" value="Conocer todas las herramientas del entorno de trabajo de neoStampa"><span>Conocer todas las herramientas del entorno de trabajo de neoStampa</span></label>
       </div>
       <span class="err">Elige tu objetivo principal.</span>
     </div>
@@ -502,6 +534,11 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
       <a class="btn-lime" href="https://checkout.wompi.co/l/VPOS_OMhtLA" target="_blank" rel="noopener">Pagar con Wompi
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
+
+    <div class="upload" id="upBox">
+      <div class="up-txt"><b>¿Ya realizaste tu pago?</b> Carga aquí la foto o el PDF de tu comprobante y lo recibiremos de inmediato.</div>
+      <a class="btn-up" id="upBtn" href="#" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5l5 5M5 20h14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Cargar comprobante de pago</a>
+    </div>
   </section>
 
   <!-- PASO 4 -->
@@ -512,14 +549,12 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
       <div class="channels">
         <div class="chan">
           <div class="chan-h"><span class="ch-ic ch-mail"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" stroke="#fff" stroke-width="2.2"/><path d="M4 7.5l8 5.5 8-5.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Email</div>
-          <a href="mailto:facturacion@tiimpal.com">facturacion@tiimpal.com</a>
           <a href="mailto:directoroperaciones@tiimpal.com">directoroperaciones@tiimpal.com</a>
           <a href="mailto:comercial@tiimpal.com">comercial@tiimpal.com</a>
         </div>
         <div class="chan">
           <div class="chan-h"><span class="ch-ic ch-wa"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h14a2 2 0 012 2v9a2 2 0 01-2 2h-8l-4.5 3.5V17.5H5a2 2 0 01-2-2v-9a2 2 0 012-2z" stroke="#fff" stroke-width="2.1" stroke-linejoin="round"/><circle cx="8.3" cy="11" r="1.3" fill="#fff"/><circle cx="12" cy="11" r="1.3" fill="#fff"/><circle cx="15.7" cy="11" r="1.3" fill="#fff"/></svg></span>WhatsApp</div>
           <a href="https://wa.me/573003175439?text=Hola%20TIIMPAL%2C%20les%20env%C3%ADo%20mi%20comprobante%20de%20pago%20del%20Inedit%20Boot%20Camp." target="_blank" rel="noopener">+57 300 317 5439</a>
-          <a href="https://wa.me/573332241285?text=Hola%20TIIMPAL%2C%20les%20env%C3%ADo%20mi%20comprobante%20de%20pago%20del%20Inedit%20Boot%20Camp." target="_blank" rel="noopener">+57 333 224 1285</a>
           <a href="https://wa.me/573153062243?text=Hola%20TIIMPAL%2C%20les%20env%C3%ADo%20mi%20comprobante%20de%20pago%20del%20Inedit%20Boot%20Camp." target="_blank" rel="noopener">+57 315 306 2243</a>
         </div>
       </div>
@@ -556,15 +591,6 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
     </div>
   </div>
   <div class="w-body">
-    <div class="last">
-      <span class="last-tag">Último paso</span>
-      <h3>Envíanos tu comprobante de pago</h3>
-      <p>Tu registro ya llegó al equipo de TIIMPAL. Para confirmar tu cupo, <b>envíanos la foto o el PDF de tu comprobante de pago</b> por WhatsApp o por email.</p>
-      <div class="mailbtns">
-        <a class="mb wa" id="cpWa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-        <a class="mb" id="cpMail" href="#">Enviar por email</a>
-      </div>
-    </div>
     <h3 id="wHello">Estamos procesando tu registro</h3>
     <p>Una vez sea confirmado tu pago, te estaremos enviando todas las instrucciones y recomendaciones para que tu experiencia de aprendizaje en el Boot Camp sea 100% exitosa. Pronto uno de nuestros asesores te estará contactando al correo <b id="wMail"></b> o a tu WhatsApp, o ponte en contacto con nosotros:</p>
     <div class="contact">
@@ -631,12 +657,13 @@ input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{box-shadow:
 <script>
 /* ================= CONFIGURACIÓN ================= */
 const CONFIG = {
-  // Correos a los que el cliente envía su comprobante de pago (botón "Enviar por email")
-  para: "comercial@tiimpal.com,directoroperaciones@tiimpal.com,facturacion@tiimpal.com,cartera@tiimpal.com",
   waTiimpal: "573153062243",
+  // Enlace de OneDrive "Solicitar archivos" (carpeta Boot Camp > Comprobantes de pago).
+  // Mientras esté vacío, el botón "Cargar comprobante de pago" abre WhatsApp para enviarlo por ahí.
+  linkComprobante: "",
   // Formulario de Microsoft Forms (cuenta comercial@tiimpal.com) que recibe cada registro.
   // Power Automate toma cada respuesta: fila en Excel + PDF en OneDrive/Boot Camp + correo al equipo.
-  formUrl: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=46f8a6iY4Em3I2CV69YMO68C6H9_9WRBvbNw7cmbK75UMTZNS1Q3TEhUUTRGVFlFQ1RMQ1Y0MDZBQy4u",
+  formUrl: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=46f8a6iY4Em3I2CV69YMO9qL60lM07ZNiz8jfuqpYH1UMTZNS1Q3TEhUUTRGVFlFQ1RMQ1Y0MDZBQyQlQCN0PWcu",
   preguntas: {
     'Fecha de registro': 'rb8d77cd4a6c34fe180a8f44139218902',
     'Nombre o Razón Social': 'r7f9f1783cadf4a40842ae28643504726',
@@ -651,7 +678,11 @@ const CONFIG = {
     'Objetivo principal': 'r3e6536623aa14ddcb25046dcc0023952',
     'Nombres del participante': 'r633e559370f444159a6c4d597060c991',
     'Apellidos del participante': 'r82d938d19be44d7099d54663af55de7e',
-    'Documento de identidad del participante': 'r5a6269f7e092480095fe7adede937c0e'
+    'Documento de identidad del participante': 'r5a6269f7e092480095fe7adede937c0e',
+    'Sexo': 'r2a77267155264310b89f2416728b3df9',
+    'Edad': 'r3f9e2004154449acb39ec58be3cfb8ef',
+    'Cargo': 'ra99816d7f80d49af92cf89d8037befad',
+    'Nivel de formación': 'r57019c8db01c47f391c00f60cd179877'
   }
 };
 /* ================================================= */
@@ -690,6 +721,10 @@ const rules = {
   dir:    () => val('dir').length >= 5,
   ciudad: () => val('ciudad').length >= 3,
   email:  () => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email')),
+  sexo:   () => !!val('sexo'),
+  edad:   () => !!val('edad'),
+  cargo:  () => val('cargo').length >= 2,
+  nivel:  () => !!val('nivel'),
   usa:    () => !!radio('usa'),
   proc:   () => checked('proc').length > 0,
   marca:  () => checked('marca').length > 0,
@@ -706,7 +741,7 @@ function validate(){
     if (!good && !first) first = box;
   }
   $('#sumErr').classList.toggle('on', !!first);
-  if (first) { first.scrollIntoView({behavior:'smooth', block:'center'}); const i = first.querySelector('input'); if (i) setTimeout(() => i.focus({preventScroll:true}), 350); }
+  if (first) { first.scrollIntoView({behavior:'smooth', block:'center'}); const i = first.querySelector('input,select'); if (i) setTimeout(() => i.focus({preventScroll:true}), 350); }
   return !first;
 }
 // limpiar error al corregir
@@ -726,6 +761,10 @@ function collect(){
     'Dirección': val('dir'),
     'Ciudad': val('ciudad'),
     'Email': val('email'),
+    'Sexo': val('sexo'),
+    'Edad': val('edad'),
+    'Cargo': val('cargo'),
+    'Nivel de formación': val('nivel'),
     'Usa NeoStampa': radio('usa'),
     'Para qué usa NeoStampa': checked('proc').join(', '),
     'Marcas de impresoras': marcas.join(', '),
@@ -797,11 +836,6 @@ function success(d){
   $('#wHello').textContent = '¡Gracias, ' + d['Nombre o Razón Social'] + '! Estamos procesando tu registro';
   $('#wMail').textContent = d['Email'];
   $('#recap').textContent = 'Participante: ' + participante + ' · Doc. ' + d['Documento de identidad del participante'] + ' · Registro: ' + d['Fecha de registro'];
-  const msg = 'Hola TIIMPAL, soy ' + d['Nombre o Razón Social'] + ' (C.C. o NIT ' + d['C.C. o NIT'] + '). Acabo de inscribir a ' + participante
-    + ' en el Inedit Boot Camp y les envío mi comprobante de pago.';
-  $('#cpWa').href = 'https://wa.me/' + CONFIG.waTiimpal + '?text=' + enc(msg);
-  $('#cpMail').href = 'mailto:' + CONFIG.para + '?subject=' + enc('Comprobante de pago Inedit Boot Camp – ' + d['Nombre o Razón Social'])
-    + '&body=' + enc(msg + '\n\n(Adjunta aquí la foto o el PDF de tu comprobante)');
   confetti();
   window.scrollTo({top: 0, behavior: 'smooth'});
   setTimeout(() => w.focus({preventScroll:true}), 400);
@@ -816,11 +850,18 @@ function confetti(){
     top.appendChild(s);
   }
 }
+/* ---- botón de carga del comprobante ---- */
+(() => {
+  const b = $('#upBtn');
+  if (CONFIG.linkComprobante) { b.href = CONFIG.linkComprobante; }
+  else { b.href = 'https://wa.me/' + CONFIG.waTiimpal + '?text=' + encodeURIComponent('Hola TIIMPAL, les envío mi comprobante de pago del Inedit Boot Camp.'); }
+})();
+$$('select').forEach(s => { const f = () => s.classList.toggle('empty', !s.value); s.addEventListener('change', f); f(); });
 $('#again').addEventListener('click', () => {
-  form.reset(); $('#otraWrap').hidden = true; ['pn','pa','pd'].forEach(i => $('#'+i).value = ''); $$('[data-d]').forEach(b => b.classList.remove('invalid'));
+  form.reset(); $$('select').forEach(s => s.classList.add('empty')); $('#otraWrap').hidden = true; ['pn','pa','pd'].forEach(i => $('#'+i).value = ''); $$('[data-d]').forEach(b => b.classList.remove('invalid'));
   $$('.invalid').forEach(b => b.classList.remove('invalid')); $('#sumErr').classList.remove('on');
   $('#welcome').hidden = true; form.hidden = false; $('#hero').hidden = false; document.body.classList.remove('done'); $$('.conf').forEach(c => c.remove());
   window.scrollTo({top: 0, behavior: 'smooth'});
 });
 </script>
-<!-- v-precio-2500 -->
+<!-- v-campos-perfil -->
